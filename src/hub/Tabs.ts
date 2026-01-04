@@ -11,6 +11,7 @@ import TabType, { getDefaultTabTitle, getTabIcon } from "../shared/TabType";
 import { getAutonomousKey, getEnabledKey } from "../shared/log/LogUtil";
 import ConsoleRenderer from "../shared/renderers/ConsoleRenderer";
 import DocumentationRenderer from "../shared/renderers/DocumentationRenderer";
+import EmbeddedVideoRenderer from "../shared/renderers/EmbeddedVideoRenderer";
 import Field2dRenderer from "../shared/renderers/Field2dRenderer";
 import Field3dRenderer from "../shared/renderers/Field3dRenderer";
 import JoysticksRenderer from "../shared/renderers/JoysticksRenderer";
@@ -28,6 +29,7 @@ import { clampValue } from "../shared/util";
 import ScrollSensor from "./ScrollSensor";
 import Timeline from "./Timeline";
 import ConsoleController from "./controllers/ConsoleController";
+import EmbeddedVideoController from "./controllers/EmbeddedVideoController";
 import Field2dController from "./controllers/Field2dController";
 import Field3dController from "./controllers/Field3dController";
 import JoysticksController from "./controllers/JoysticksController";
@@ -96,6 +98,7 @@ export default class Tabs {
     this.FIXED_CONTROL_HEIGHTS.set(TabType.Mechanism, undefined);
     this.FIXED_CONTROL_HEIGHTS.set(TabType.Points, undefined);
     this.FIXED_CONTROL_HEIGHTS.set(TabType.Metadata, 0);
+    this.FIXED_CONTROL_HEIGHTS.set(TabType.EmbeddedVideo, 0);
 
     // Hover and click handling
     let mouseDownInfo: [number, number] | null = null;
@@ -535,6 +538,10 @@ export default class Tabs {
       case TabType.Metadata:
         controller = new MetadataController();
         renderer = new MetadataRenderer(rendererElement);
+        break;
+      case TabType.EmbeddedVideo:
+        controller = new EmbeddedVideoController(rendererElement);
+        renderer = new EmbeddedVideoRenderer(rendererElement);
         break;
       default:
         controller = new NoopController();

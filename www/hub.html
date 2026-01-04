@@ -466,6 +466,9 @@
 
       <!-- Metadata -->
       <div id="controller12"></div>
+
+      <!-- Embedded Video -->
+      <div id="controller13"></div>
     </span>
 
     <span id="rendererTemplates" hidden>
@@ -646,6 +649,24 @@
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+
+      <!-- Embedded Video -->
+      <div id="renderer13">
+        <div class="embedded-video-content">
+          <div class="embedded-video-drag-highlight">
+            <img src="symbols/rectangle.and.hand.point.up.left.filled.svg" />
+            <span>Drag a Video field here</span>
+          </div>
+          <div class="embedded-video-field-display" hidden>
+            <span></span>
+            <button class="embedded-video-close" tabindex="-1" hidden>
+              <img src="symbols/xmark.svg" />
+            </button>
+          </div>
+          <canvas></canvas>
+          <div class="embedded-video-message" hidden></div>
         </div>
       </div>
     </span>
